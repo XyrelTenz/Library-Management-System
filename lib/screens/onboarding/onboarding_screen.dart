@@ -47,37 +47,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           OnboardingIndicator(controller: _controller, count: 3),
 
           const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              if (isLastPage) {
-                // navigate to home, login, etc.
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (_) => const Placeholder()),
-                );
-              } else {
-                _controller.nextPage(
-                  duration: const Duration(milliseconds: 400),
-                  curve: Curves.easeInOut,
-                );
-              }
-            },
-            style: ElevatedButton.styleFrom(
-              minimumSize: const Size(double.infinity, 50),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(isLastPage ? "Get Started" : "Next"),
-                const SizedBox(width: 8),
-                // 👇 Show different icons based on isLastPage
-                Icon(
-                  isLastPage
-                      ? Icons.arrow_forward_ios_rounded
-                      : Icons.navigate_next_rounded,
-                ),
-              ],
-            ),
+
+          Column(
+            children: [
+              Icon(
+                isLastPage ? Icons.arrow_forward_ios : Icons.arrow_back_ios_new,
+              ),
+            ],
           ),
         ],
       ),
